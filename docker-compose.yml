@@ -1,0 +1,36 @@
+networks:
+  front:
+    ipam:
+      config:
+        - subnet: 172.31.0.0/24
+
+services:
+  django:
+    build: .\proyecto_futbol\docker_campeones
+    command: >
+      sh -c " 
+      python manage.py runserver 0.0.0.0:8000"
+    networks:
+      front:
+        ipv4_address: 172.31.0.66
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+
+  mysql:
+    build: .\proyecto_futbol\docker_mysql
+    volumes:
+      - C:\sw\Docker_compose\db_data:/var/lib/mysql
+      - C:\sw\Docker_compose\load_data\base_inicial.sql:/docker-entrypoint-initdb.d/base_inicial.sql
+    networks:
+      front:
+        ipv4_address: 172.31.0.65
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
