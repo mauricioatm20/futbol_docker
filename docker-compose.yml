@@ -24,7 +24,7 @@ services:
     build: .\proyecto_futbol\docker_mysql
     volumes:
       - C:\sw\Docker_compose\db_data:/var/lib/mysql
-      - C:\sw\Docker_compose\load_data\base_inicial.sql:/docker-entrypoint-initdb.d/base_inicial.sql
+      - C:\sw\Docker_compose\load_data\liga2.sql:/docker-entrypoint-initdb.d/liga2.sql
     networks:
       front:
         ipv4_address: 172.31.0.65
