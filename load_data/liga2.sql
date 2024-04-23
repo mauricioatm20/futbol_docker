@@ -346,6 +346,7 @@ CREATE TABLE `futbol_player` (
   `age` int NOT NULL,
   `position` varchar(100) NOT NULL,
   `team_id` bigint NOT NULL,
+  `nationality` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `futbol_player_team_id_8366606e_fk_futbol_teams_id` (`team_id`),
   CONSTRAINT `futbol_player_team_id_8366606e_fk_futbol_teams_id` FOREIGN KEY (`team_id`) REFERENCES `futbol_teams` (`id`)
@@ -358,7 +359,7 @@ CREATE TABLE `futbol_player` (
 
 LOCK TABLES `futbol_player` WRITE;
 /*!40000 ALTER TABLE `futbol_player` DISABLE KEYS */;
-INSERT INTO `futbol_player` VALUES (1,'Jan','Oblack',31,'portero',5),(2,'Jose ','Gimenez',29,'defensa',5),(3,'Vinicius Jr','Paixão de Oliveira',23,'Delantero',1);
+INSERT INTO `futbol_player` VALUES (1,'Jan','Oblack',31,'portero',5,NULL),(2,'Jose ','Gimenez',29,'defensa',5,NULL),(3,'Vinicius Jr','Paixão de Oliveira',23,'Delantero',1,'Brazilian');
 /*!40000 ALTER TABLE `futbol_player` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,7 +378,7 @@ CREATE TABLE `futbol_puntos_equipo` (
   PRIMARY KEY (`id`),
   KEY `pun_equipo_idx` (`team_id`),
   CONSTRAINT `pun_equipo` FOREIGN KEY (`team_id`) REFERENCES `futbol_teams` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -386,7 +387,7 @@ CREATE TABLE `futbol_puntos_equipo` (
 
 LOCK TABLES `futbol_puntos_equipo` WRITE;
 /*!40000 ALTER TABLE `futbol_puntos_equipo` DISABLE KEYS */;
-INSERT INTO `futbol_puntos_equipo` VALUES (1,1,1,1),(2,1,1,4),(3,1,1,3),(4,1,1,6),(5,1,3,5),(6,1,3,2),(7,1,0,7),(8,1,0,8),(9,2,3,4),(10,2,3,5),(11,2,0,1),(12,2,0,2),(13,2,0,3),(14,2,3,6),(15,2,3,7),(16,2,0,8);
+INSERT INTO `futbol_puntos_equipo` VALUES (1,1,1,1),(2,1,1,4),(3,1,1,3),(4,1,1,6),(5,1,3,5),(6,1,3,2),(7,1,0,7),(8,1,0,8),(9,2,3,4),(10,2,3,5),(11,2,0,1),(12,2,0,2),(13,2,0,3),(14,2,3,6),(15,2,3,7),(16,2,0,8),(17,3,3,1),(18,3,1,2),(19,3,0,3),(20,3,3,4),(21,3,0,5),(22,3,3,6),(23,3,1,7),(24,3,3,8);
 /*!40000 ALTER TABLE `futbol_puntos_equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,8 +403,9 @@ CREATE TABLE `futbol_teams` (
   `team` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
-  `logo` blob,
+  `logo` varchar(50) DEFAULT NULL,
   `total_points` int NOT NULL,
+  `fondo` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -414,7 +416,7 @@ CREATE TABLE `futbol_teams` (
 
 LOCK TABLES `futbol_teams` WRITE;
 /*!40000 ALTER TABLE `futbol_teams` DISABLE KEYS */;
-INSERT INTO `futbol_teams` VALUES (1,'Real Madrid','España','Madrid','',1),(2,'FC Barcelona','España','Barceloa',NULL,3),(3,'Arsernal','Inglaterra','Londres',NULL,1),(4,'Mancherter City','Inglaterra','Manchester',NULL,4),(5,'Atletico Madrid','España','Madrid',NULL,6),(6,'Bayer München','Alemania','Múnich',NULL,4),(7,'Paris Saint-Germani','Francia','Paris',NULL,3),(8,'Borussia Dortmund','Alemania','Dormunt',NULL,0);
+INSERT INTO `futbol_teams` VALUES (1,'Real Madrid','España','Madrid','',4,'real_madrid.jpg'),(2,'FC Barcelona','España','Barceloa',NULL,4,'barca.jpg'),(3,'Arsernal','Inglaterra','Londres',NULL,1,'arsenal.jpg'),(4,'Mancherter City','Inglaterra','Manchester',NULL,7,'man_c.jpg'),(5,'Atletico Madrid','España','Madrid',NULL,6,'atletico.jpg'),(6,'Bayer München','Alemania','Múnich',NULL,7,'bayer.jpg'),(7,'Paris Saint-Germani','Francia','Paris',NULL,4,'psg.jpg'),(8,'Borussia Dortmund','Alemania','Dormunt',NULL,3,'borusia.jpg');
 /*!40000 ALTER TABLE `futbol_teams` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -427,4 +429,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-18 10:33:01
+-- Dump completed on 2024-04-23 10:48:04
