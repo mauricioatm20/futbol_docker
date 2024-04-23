@@ -1,0 +1,33 @@
+.equipo-background {
+    background-size: cover; /* Ajustar la imagen para cubrir todo el contenedor */
+
+}
+h2 {
+    color: white;
+}
+.graf{
+
+    width: 45%;
+    height: auto;
+    opacity: 0.9;
+    position: absolute; /* Posición absoluta para superponer una imagen sobre la otra */
+    top: 450px; /* Ajusta la posición vertical según sea necesario */
+    left: 930px; /* Ajusta la posición horizontal según sea necesario */
+    z-index: 1; /* Asegura que la imagen superpuesta esté sobre la imagen de fondo */
+    /* Ajusta el tamaño y otros estilos de la imagen superpuesta según sea necesario */
+
+}
+
+.list_jug{
+    color: whitesmoke;
+    font-size: 20px;
+}
+.jugadores{
+    color: white;
+}
+.ciudad{
+    color: white;
+}
+.pais{
+    color: white;
+}

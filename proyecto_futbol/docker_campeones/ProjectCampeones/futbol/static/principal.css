@@ -1,10 +1,10 @@
 .fondo {
-    background: white url("img/UEFA-Champions-League.jpg");
+    background: white url("img/champions.jpg");
     background-size: cover;
 }
 .titulo{
     padding: 100px;
-    font-size: 50px;
+    font-size: 35px;
     font-family: "Impact";
     color: aliceblue;
 }
@@ -15,4 +15,11 @@ td {
     padding: 8px;
     color: aliceblue
 
+}
+thead{
+    color: whitesmoke;
+    font-family: "Calibri Light";
+}
+a {
+    color: whitesmoke;
 }
